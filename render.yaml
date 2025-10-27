@@ -40,10 +40,21 @@ services:
         value: https
       - key: NODE_ENV
         value: production
-      # ВАЖНО: Укажите здесь URL вашего сервиса для webhooks
-      # Замените на ваш реальный URL после деплоя
       - key: WEBHOOK_URL
-        value: https://your-service-name.onrender.com
+        value: "https://n8n-service-1j40.onrender.com"
+      - key: N8N_PROXY_HOPS
+        value: "1"
+      - key: N8N_RUNNERS_ENABLED
+        value: "true"
+      - key: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
+        value: "true"
+      - key: N8N_GIT_NODE_DISABLE_BARE_REPOS
+        value: "true"
+  # Выберите одно из двух в зависимости от нужд Code Node
+      - key: N8N_BLOCK_ENV_ACCESS_IN_NODE
+        value: "true"   # безопаснее, запрет доступа из кода
+  # - key: N8N_BLOCK_ENV_ACCESS_IN_NODE
+  #   value: "false"  # нужен доступ к env в Code Node и выражениях
       # Ключ шифрования (сгенерируйте свой!)
       - key: N8N_ENCRYPTION_KEY
         generateValue: true
