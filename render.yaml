@@ -42,14 +42,16 @@ services:
         value: production
       - key: WEBHOOK_URL
         value: "https://n8n-service-1j40.onrender.com"
-      - key: N8N_PROXY_HOPS
-        value: "1"
       - key: N8N_RUNNERS_ENABLED
         value: "true"
+      - key: N8N_RUNNERS_MODE
+        value: "internal"
       - key: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
         value: "true"
       - key: N8N_GIT_NODE_DISABLE_BARE_REPOS
         value: "true"
+      - key: N8N_PROXY_HOPS
+        value: "1"
   # Выберите одно из двух в зависимости от нужд Code Node
       - key: N8N_BLOCK_ENV_ACCESS_IN_NODE
         value: "true"   # безопаснее, запрет доступа из кода
