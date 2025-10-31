@@ -8,29 +8,25 @@ services:
     plan: free
     healthCheckPath: /healthz
     envVars:
-      # Настройки базы данных
+      # Подключение к Supabase (session pooler)
       - key: DB_TYPE
         value: postgresdb
       - key: DB_POSTGRESDB_HOST
-        fromDatabase:
-          name: n8n-db
-          property: host
+        value: aws-1-eu-west-1.pooler.supabase.com
       - key: DB_POSTGRESDB_PORT
-        fromDatabase:
-          name: n8n-db
-          property: port
+        value: "5432"
       - key: DB_POSTGRESDB_DATABASE
-        fromDatabase:
-          name: n8n-db
-          property: database
+        value: postgres
       - key: DB_POSTGRESDB_USER
-        fromDatabase:
-          name: n8n-db
-          property: user
+        value: postgres.cajwhyrkxnndhxaxjggg
       - key: DB_POSTGRESDB_PASSWORD
-        fromDatabase:
-          name: n8n-db
-          property: password
+        value: "!Q@W1q2w!Q@W"
+      # TLS для Supabase (включает SSL без кастомного CA)
+      - key: DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED
+        value: "false"
+      # Префикс таблиц n8n
+      - key: DB_TABLE_PREFIX
+        value: n8n_
       # Общие настройки n8n
       - key: N8N_HOST
         value: 0.0.0.0
@@ -52,17 +48,8 @@ services:
         value: "true"
       - key: N8N_PROXY_HOPS
         value: "1"
-  # Выберите одно из двух в зависимости от нужд Code Node
       - key: N8N_BLOCK_ENV_ACCESS_IN_NODE
-        value: "true"   # безопаснее, запрет доступа из кода
-  # - key: N8N_BLOCK_ENV_ACCESS_IN_NODE
-  #   value: "false"  # нужен доступ к env в Code Node и выражениях
+        value: "true"
       # Ключ шифрования (сгенерируйте свой!)
       - key: N8N_ENCRYPTION_KEY
         generateValue: true
-
-databases:
-  # PostgreSQL база данных
-  - name: n8n-db
-    databaseName: n8n_data
-    plan: free
