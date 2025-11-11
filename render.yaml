@@ -20,7 +20,7 @@ services:
       - key: DB_POSTGRESDB_USER
         value: postgres.cajwhyrkxnndhxaxjggg
       - key: DB_POSTGRESDB_PASSWORD
-        fromSecret: DB_POSTGRESDB_PASSWORD
+        fromGroup: db_secrets
       # TLS для Supabase (включает SSL без кастомного CA)
       - key: DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED
         value: "false"
