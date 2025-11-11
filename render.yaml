@@ -50,6 +50,10 @@ services:
         value: "1"
       - key: N8N_BLOCK_ENV_ACCESS_IN_NODE
         value: "true"
+      - key: N8N_TASK_MODE
+        value: worker
+      - key: N8N_TASK_BROKER_ADDRESS
+        value: 127.0.0.1:5679        
       # Ключ шифрования (сгенерируйте свой!)
       - key: N8N_ENCRYPTION_KEY
         generateValue: true
