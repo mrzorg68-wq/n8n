@@ -27,7 +27,7 @@ services:
         value: n8n_
       # Общие настройки n8n
       - key: N8N_HOST
-        value: 0.0.0.0
+        value: n8n-service-1j40.onrender.com
       - key: N8N_PORT
         value: "5678"
       - key: N8N_PROTOCOL
@@ -36,10 +36,6 @@ services:
         value: production
       - key: WEBHOOK_URL
         value: "https://n8n-service-1j40.onrender.com"
-      - key: N8N_RUNNERS_ENABLED
-        value: "true"
-      - key: N8N_RUNNERS_MODE
-        value: "internal"
       - key: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
         value: "true"
       - key: N8N_GIT_NODE_DISABLE_BARE_REPOS
